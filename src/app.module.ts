@@ -14,11 +14,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
     TypeOrmModule.forRoot({
       type: 'postgres', // Database type
-      host: 'localhost', // Change if using Docker
+      host: process.env.POSTGRES_HOST, // Change if using Docker
       port: 5432, // Default PostgreSQL port
-      username: 'postgres',
-      password: 'qwerty', // Change to your actual password
-      database: 'chat_app', // Database name
+      username: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_PASSWORD, // Change to your actual password
+      database: process.env.POSTGRES_DATABASE, // Database name
       autoLoadEntities: true, // Automatically load entities
       synchronize: true, // Set to false in production
     }),
